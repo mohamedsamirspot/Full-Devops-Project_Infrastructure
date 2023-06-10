@@ -1,0 +1,26 @@
+---
+- name: Deploy Jenkins to GKE
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Apply namespace.yaml
+      command: kubectl apply -f namespace.yaml
+
+    - name: Apply serviceAccount.yaml
+      command: kubectl apply -f serviceAccount.yaml
+
+    - name: Apply volume.yaml
+      command: kubectl apply -f volume.yaml
+
+    - name: Apply master-deployment.yaml
+      command: kubectl apply -f master-deployment.yaml
+
+    - name: Apply master-service.yaml
+      command: kubectl apply -f master-service.yaml
+
+    - name: Apply slave-deployment.yaml
+      command: kubectl apply -f slave-deployment.yaml
+
+    - name: Apply slave.svc.yaml
+      command: kubectl apply -f slave.svc.yaml
+
