@@ -17,6 +17,11 @@ Using these technologies and tools:
 # Full-Devops-Project_Infrastructure:
 in this infrastructure we are going to prepair the gcp infra using terraform for our kubernates cluster to deploy our jenkins and our app to it.
 ![Image Description](Screenshots/Draw.io.jpg)
+
+
+https://github.com/mohamedsamirspot/Full-Devops-Project_Infrastructure/assets/71722372/d90554c2-2046-4672-9682-e01344992031
+
+
 ## GCP Infrastructure includes:
 - 1 VPC
 - Backend for saving the tfstate file of terraform
