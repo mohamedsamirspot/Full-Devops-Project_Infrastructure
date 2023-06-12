@@ -177,7 +177,9 @@ now copy the contents of the public key
 ![Image Description](Screenshots/40.png)
 ![Image Description](Screenshots/41.png)
 
-create the database credential for mysql of type secret text
+- create the database credential for mysql of type secret text (❗❗Note: must be in base 64 format)
+- which will be passed in the jenkinsfile helm command as a value variable to be passed to the creation of the db-secret yaml file in the cluster, then to be passed to the app, database deployments containers
+- in my case i will create 4 secrets one in each namespace and use it through the current env
 ![Image Description](Screenshots/42.png)
 
 connect to the slave pod and change /var/run/docker.sock permissions
