@@ -1,4 +1,4 @@
-Here is a full devops project to deploy my Asp.net core web app (news app) with mysql database in a full gitflow including 5 branches (test, dev, preprod, release) and the main branch to be the base code.
+A full devops project to deploy my Asp.net core web app (news app) with mysql database in a full gitflow including 5 branches (test, dev, preprod, release) and the main branch to contain the base code.
 Using these technologies and tools:
 - `GCP (Google Cloud Platform)`
 - `Dotnet core 7`
