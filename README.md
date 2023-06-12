@@ -17,11 +17,6 @@ Using these technologies and tools:
 # Full-Devops-Project_Infrastructure:
 in this infrastructure we are going to prepair the gcp infra using terraform for our kubernates cluster to deploy our jenkins and our app to it.
 ![Image Description](Screenshots/Draw.io.jpg)
-
-
-https://github.com/mohamedsamirspot/Full-Devops-Project_Infrastructure/assets/71722372/d90554c2-2046-4672-9682-e01344992031
-
-
 ## GCP Infrastructure includes:
 - 1 VPC
 - Backend for saving the tfstate file of terraform
@@ -66,11 +61,8 @@ Firstly creating the required service account for our terraform
 
 ![Image Description](Screenshots/10.1.png)
 
-if you see this error
 
-![Image Description](Screenshots/10.3.png)
-empty this file (known_hosts)
-![Image Description](Screenshots/10.2.png)
+
 now copy the contents of the public key
 ![Image Description](Screenshots/11.png)
 ![Image Description](Screenshots/12.png)
@@ -82,7 +74,16 @@ now copy the contents of the public key
 - Now configure this vm using ansible to install the required tools (like gcloud (to work with the cluster), kubectl, helm, ...)
   --> [Ansible files](ansible-vm-preparation)
 
+      don't forget to get the public ip of the vm and put it in the inventory and vm-preparation.yml files
       ansible-playbook vm-preparation.yml
+
+if you see this error
+
+![Image Description](Screenshots/10.3.png)
+
+empty this file (known_hosts)
+
+![Image Description](Screenshots/10.2.png)
       
 ![Image Description](Screenshots/14.png)
 
@@ -94,20 +95,26 @@ now copy the contents of the public key
 
 
 - Now ssh to this public vm from your local machine to begin the work
-      
-      gcloud compute ssh --zone "<zone_name>" "<privatevm_name>" --tunnel-through-iap --project "<project_id>"
 
-- Connect to the cluster
+- get clone the Infrastructure files to deploy jenkins
 
       git clone https://github.com/mohamedsamirspot/Full-Devops-Project_Infrastructure
 
+- Deploy jenkins infrastructure (master and slave) using ansible --> [Ansible Jenkins yaml files](Jenkins-Yaml-Files-With-Ansible)
+
+      cd Full-Devops-Project_Infrastructure
+      cd Jenkins-Yaml-Files-With-Ansible
 - Connect to the cluster
 
       gcloud container clusters get-credentials <privatecluster_name> --zone <zone_name> --project <project_id>
 
-- Deploy jenkins infrastructure (master and slave) using ansible --> [Ansible Jenkins yaml files](Jenkins-Yaml-Files-With-Ansible)
+- run the playbook
 
       ansible-playbook ansible_jenkins.yaml
+
+
+
+
 
 ![Image Description](Screenshots/16.png)   
 ![Image Description](Screenshots/17.png) 
@@ -124,6 +131,10 @@ now copy the contents of the public key
 
       kubectl exec -it jenkins-master-pod-name -n jenkins -- bash
       cat /var/jenkins_home/secrets/initialAdminPassword
+
+or just get it from logs
+      
+      kubectl logs jenkins-master-dep-6c68d86f64-qqvq2 -n jenkins
 
 ![Image Description](Screenshots/21.png)
 
@@ -172,7 +183,7 @@ now copy the contents of the public key
 
 ![Image Description](Screenshots/39.png)
 
-- then create a secretfile credential to use this kubeconfig file content on Jenkinsfile
+- then create a secretfile credential to use this kubeconfig file content on Jenkinsfile as the service account is working inside the pod w can create anything but it doesn't work inside the jenkins file so it is useless in our project 😞 it require a plugin
 
 ![Image Description](Screenshots/40.png)
 ![Image Description](Screenshots/41.png)
@@ -181,11 +192,6 @@ now copy the contents of the public key
 - which will be passed in the jenkinsfile helm command as a value variable to be passed to the creation of the db-secret yaml file in the cluster, then to be passed to the app, database deployments containers
 - in my case i will create 4 secrets one in each namespace and use it through the current env
 ![Image Description](Screenshots/42.png)
-
-connect to the slave pod and change /var/run/docker.sock permissions
-
-      kubectl exec -it jenkins-slave-pod-name -n jenkins -- bash
-      chmod 777 /var/run/docker.sock
 
 create multibranch pipeline
 
