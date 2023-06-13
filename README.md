@@ -127,7 +127,7 @@ empty this file (known_hosts)
 - Now access master jenkins pod using the service loadbalancer ip
 
 ![Image Description](Screenshots/19.png)
-![Image Description](Screenshots/20.png)
+![Image Description](Screenshots/20.1.png)
 
       kubectl exec -it jenkins-master-pod-name -n jenkins -- bash
       cat /var/jenkins_home/secrets/initialAdminPassword
@@ -135,6 +135,9 @@ empty this file (known_hosts)
 or just get it from logs
       
       kubectl logs jenkins-master-dep-6c68d86f64-qqvq2 -n jenkins
+
+![Image Description](Screenshots/20.2.png)
+![Image Description](Screenshots/20.3.png)
 
 ![Image Description](Screenshots/21.png)
 
