@@ -20,6 +20,7 @@ spec:
       containers:
         - name: jenkins-slave
           image: docker.io/mohamedsamirebrahim/enhanced-slave-image:latest
+          # or just image: mohamedsamirebrahim/enhanced-slave-image:latest
           resources:
             requests:
               memory: '128Mi'
