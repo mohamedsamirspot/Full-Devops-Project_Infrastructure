@@ -17,6 +17,7 @@ Using these technologies and tools:
 # Full-Devops-Project_Infrastructure:
 in this infrastructure we are going to prepair the gcp infra using terraform for our kubernates cluster to deploy our jenkins and our app to it.
 ![Image Description](Screenshots/Draw.io.jpg)
+![Image Description](./My Video - Compressed.mp4)
 
 
 https://github.com/mohamedsamirspot/Full-Devops-Project_Infrastructure/assets/71722372/8ae2b7a6-e9e5-4de7-ad06-e16acdfdb530

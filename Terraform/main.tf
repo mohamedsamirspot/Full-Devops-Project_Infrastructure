@@ -1,5 +1,5 @@
 provider "google" {
-  credentials = file("myproject-387907-e7f35d37e08e.json")
+  credentials = file("myproject-387907-7defe466f6aa.json")
   project = var.project_id
   region  = var.region
   zone    = var.zone 
@@ -110,6 +110,13 @@ resource "google_compute_instance" "public_vm" {
     email  = google_service_account.gke-publicinstance-sa[1].email
     scopes = ["cloud-platform"] # Allow full access to all Cloud APIs
   }
+
+  #ssh-keygen -t ed25519 -C  <remote-user-name> -f <file-name>
+    metadata = {
+    "ssh-keys" = <<EOT
+      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFuqfrw3GVPZxo1Ojz7hcTjotuwVeBt1g9G5poYVb3KM mohamedsamirspot@gmail.com
+      EOT
+   }
 }
 
 # cloud router for the nat
