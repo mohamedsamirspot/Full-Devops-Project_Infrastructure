@@ -1,3 +1,4 @@
-Terraform/myproject-387907-e7f35d37e08e.json
+myproject-387907-d5bf47e25357.json
 terraform.tfstate*
 *.terraform*
+.terraform/
