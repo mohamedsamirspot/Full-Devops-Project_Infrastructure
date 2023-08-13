@@ -112,7 +112,7 @@ resource "google_compute_instance" "public_vm" {
   }
 
   #ssh-keygen -t ed25519 -C  <remote-user-name> -f <file-name>
-  # remote user this is the user to connect to the vm using ssh (ssh -i full-devops-proj-bastian-host-key spot@34.74.222.37)
+  # remote user this is the user to connect to the vm using ssh (ssh -i /home/spot/.ssh/full-devops-proj-bastian-host-key spot@34.74.222.37)
     metadata = {
     "ssh-keys" = <<EOT
       ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGhUumonYTfWT1Kd1FjjxsNXinHoG1alvWjmNWD5w0Dh spot

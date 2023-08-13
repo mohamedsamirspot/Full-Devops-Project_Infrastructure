@@ -1,4 +1,4 @@
 Terraform/myproject-387907-d5bf47e25357.json
-terraform.tfstate*
-*.terraform*
+Terraform/full-devops-proj-bastian-host-key*
+*terraform*
 .terraform/
