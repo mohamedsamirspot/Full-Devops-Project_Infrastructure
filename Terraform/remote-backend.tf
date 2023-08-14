@@ -7,9 +7,9 @@ resource "google_storage_bucket" "remote-backend" {
     enabled = true
   }
 }
-# terraform {
-#  backend "gcs" {
-#    bucket  = "backend-bucket-iti-final-project"
-#    prefix  = "terraform/state"
-#  }
-# }
+terraform {
+ backend "gcs" {
+   bucket  = "backend-bucket-iti-final-project"
+   prefix  = "terraform/state"
+ }
+}

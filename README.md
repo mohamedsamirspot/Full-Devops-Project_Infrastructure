@@ -41,6 +41,25 @@ Firstly creating the required service account for our terraform
 ![Image Description](Screenshots/6.png)
 ![Image Description](Screenshots/7.png)
 
+- Creating my key to access the public vm (bastian host) using ssh for ansible
+
+      ssh-keygen -t ed25519 -C  <remote-user-name> -f /anypath/<file-name>
+
+
+
+![Image Description](Screenshots/10.1.png)
+
+
+
+now copy the contents of the public key
+![Image Description](Screenshots/11.png)
+![Image Description](Screenshots/12.png)
+
+  - Now put the public key content in the public vm creation key part
+
+![Image Description](Screenshots/13.png)
+
+
 - Applying the terraform infrastructure code
   - firstly create the bucket first with all infra then uncomment the it and apply again
 ![Image Description](Screenshots/8.1.png)
@@ -58,25 +77,8 @@ Firstly creating the required service account for our terraform
             terraform init -upgrade
   - Now remove your local terraform.tfstate and terraform.tfstate.backup files
 
-- Creating my key to access the vm
 
-      ssh-keygen -t rsa -f /home/spot/.ssh/myvmkey
-
-
-
-![Image Description](Screenshots/10.1.png)
-
-
-
-now copy the contents of the public key
-![Image Description](Screenshots/11.png)
-![Image Description](Screenshots/12.png)
-
-  - Now navigate to this machine to put my public key file content
-
-![Image Description](Screenshots/13.png)
-
-- Now configure this vm using ansible to install the required tools (like gcloud (to work with the cluster), kubectl, helm, ...)
+- Now configure the bastian vm using ansible to install the required tools (like gcloud (to work with the cluster), kubectl, helm, ...)
   --> [Ansible files](ansible-vm-preparation)
 
       don't forget to get the public ip of the vm and put it in the inventory and vm-preparation.yml files
