@@ -1,4 +1,7 @@
 #!/bin/bash
+
+
+#------------------------- GCP Infrastructure Creation using Terraform ---------------------------------
 cd Terraform
 
 # Store the original content of the Terraform configuration file
@@ -29,3 +32,9 @@ then
     echo "Error During Terraform Execution, Failed Run!"
     exit $?
 fi
+
+
+#------------------------- Now preparing the bastian host using ansbible ---------------------------------
+cd ..
+cd ansible-bastian_vm-preparation
+ansible-playbook vm-preparation.yml

@@ -1,5 +1,5 @@
 - name: Install required packages
-  hosts: 35.231.54.103
+  hosts: bastian-host
   become: yes
 
   tasks:

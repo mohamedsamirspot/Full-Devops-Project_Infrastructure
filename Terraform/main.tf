@@ -105,7 +105,12 @@ resource "google_compute_instance" "public_vm" {
       // This will assign a public IP to the VM
     }
   }
-  
+  provisioner "local-exec" {
+    command = <<-EOT
+      echo "[bastian-host]" > ../ansible-bastian_vm-preparation/inventory
+      echo "${google_compute_instance.public_vm.network_interface[0].access_config[0].nat_ip}" >> ../ansible-bastian_vm-preparation/inventory
+    EOT
+  }
   service_account {
     email  = google_service_account.gke-publicinstance-sa[1].email
     scopes = ["cloud-platform"] # Allow full access to all Cloud APIs
