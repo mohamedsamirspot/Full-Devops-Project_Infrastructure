@@ -24,7 +24,7 @@ SERVICE_ACCOUNT_KEY_PATH="./myproject-387907-d5bf47e25357.json"
 gcloud auth activate-service-account --key-file="$SERVICE_ACCOUNT_KEY_PATH"
 
 
-terraform init -upgrade
+echo "yes" | terraform init -upgrade # echo yes to auto accept
 terraform apply --auto-approve
 
 if [ $? -ne 0 ]
@@ -37,4 +37,6 @@ fi
 #------------------------- Now preparing the bastian host using ansbible ---------------------------------
 cd ..
 cd ansible-bastian_vm-preparation
+echo "\nSleeping for 15 Seconds for the vm to become ready for ansible"
+sleep 15
 ansible-playbook vm-preparation.yml

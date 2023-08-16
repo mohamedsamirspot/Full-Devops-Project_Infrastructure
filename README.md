@@ -60,39 +60,21 @@ now copy the contents of the public key
 ![Image Description](Screenshots/13.png)
 
 
-- Applying the terraform infrastructure code
-  - firstly create the bucket first with all infra then uncomment the it and apply again
-![Image Description](Screenshots/8.1.png)
+- Now run the script.sh bash file to create the infra using terraform (including the bucket backend to store the state file) and configure the bastian host also using ansible
 
-            terraform init
-            terraform apply
+            ./script.sh
 
 ![Image Description](Screenshots/8.2.png)
 
-  - for terraform init for the backend tfstate
-  
-      ![Image Description](Screenshots/9.png)
-      
-            gcloud auth application-default login
-            terraform init -upgrade
-  - Now remove your local terraform.tfstate and terraform.tfstate.backup files
+  - Now remove your local terraform.tfstate and terraform.tfstate.backup files you don't need them
 
-
-- Now configure the bastian vm using ansible to install the required tools (like gcloud (to work with the cluster), kubectl, helm, ...)
-  --> [Ansible files](ansible-vm-preparation)
-
-      don't forget to get the public ip of the vm and put it in the inventory and vm-preparation.yml files
-      ansible-playbook vm-preparation.yml
-
-if you see this error
+in case of you saw this error
 
 ![Image Description](Screenshots/10.3.png)
 
 empty this file (known_hosts)
 
 ![Image Description](Screenshots/10.2.png)
-      
-![Image Description](Screenshots/14.png)
 
 - Build and push the jenkins slave dockerfile with all the required tools installed on it --> [Salve-Pod-Dockerfile](Salve-Pod-Dockerfile)
 ![Image Description](Screenshots/15.png)    

@@ -8,8 +8,8 @@ resource "google_storage_bucket" "remote-backend" {
   }
 }
 terraform {
- backend "gcs" {
-   bucket  = "backend-bucket-iti-final-project"
-   prefix  = "terraform/state"
- }
+  backend "gcs" {
+    bucket = "backend-bucket-iti-final-project"
+    prefix = "terraform/state"
+  }
 }
