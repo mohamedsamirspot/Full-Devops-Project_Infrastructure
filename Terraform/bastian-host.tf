@@ -36,7 +36,7 @@ resource "google_compute_instance" "public_vm" {
   }
 
   #ssh-keygen -t ed25519 -C  <remote-user-name> -f <file-name>
-  #ssh-keygen -t ed25519 -C spot -f /Terraform folderpath/full-devops-proj-bastian-host-key
+  #ssh-keygen -t ed25519 -C spot -f /Terraform-folderpath/full-devops-proj-bastian-host-key
   # remote user this is the user to connect to the vm using ssh (ssh -i /home/spot/.ssh/full-devops-proj-bastian-host-key spot@vm-ip)
   metadata = {
     ssh-keys = file("full-devops-proj-bastian-host-key.pub")

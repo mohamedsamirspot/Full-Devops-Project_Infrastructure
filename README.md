@@ -43,7 +43,7 @@ Firstly creating the required service account for our terraform
 
 - Creating my key to access the public vm (bastian host) using ssh for ansible
 
-      ssh-keygen -t ed25519 -C  <remote-user-name> -f /anypath/<file-name>
+      ssh-keygen -t ed25519 -C  <remote-user-name> -f /Terraform-folderpath/full-devops-proj-bastian-host-key/<file-name>
 
 
 
