@@ -34,7 +34,7 @@ then
 fi
 
 
-#------------------------- Now preparing the bastian host using ansbible ---------------------------------
+#------------------------- Now preparing the bastian host using ansbible and deploy the jenkins infrastructure using helm ---------------------------------
 cd ..
 cd ansible-bastian_vm-preparation
 echo "\nSleeping for 15 Seconds for the vm to become ready for ansible"

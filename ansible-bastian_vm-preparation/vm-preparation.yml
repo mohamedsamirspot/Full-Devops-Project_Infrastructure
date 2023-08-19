@@ -34,3 +34,22 @@
       apt:
         name: ansible
         state: present
+
+    - name: Configure GKE credentials using gcp_container_cluster
+      gcp_container_cluster:
+        name: private-cluster
+        zone: us-east1-b
+        project: myproject-387907
+        config: gke-config
+        state: present  # Ensures the credentials are configured
+
+    - name: Clone DevOps project repository
+      git:
+        repo: https://github.com/mohamedsamirspot/Full-Devops-Project_Infrastructure.git
+        dest: ~/Full-Devops-Project_Infrastructure
+
+    - name: Change directory to project repository
+      shell: cd ~/Full-Devops-Project_Infrastructure/Jenkins-Yaml-Files-With-Ansible
+
+    - name: Run Jenkins playbook
+      command: ansible-playbook ansible-helm-jenkins.yaml

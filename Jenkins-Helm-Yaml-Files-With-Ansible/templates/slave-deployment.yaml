@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jenkins-slave-dep
-  namespace: jenkins
+  namespace: {{ .Values.namespace }}
 spec:
   replicas: 1
   selector:
@@ -20,7 +20,7 @@ spec:
       containers:
         - name: jenkins-slave
           image: docker.io/mohamedsamirebrahim/enhanced-slave-image:latest
-          # or just image: mohamedsamirebrahim/enhanced-slave-image:latest
+                    # or just image: mohamedsamirebrahim/enhanced-slave-image:latest
           resources:
             requests:
               memory: '128Mi'

@@ -64,10 +64,6 @@ now copy the contents of the public key
 
             ./script.sh
 
-![Image Description](Screenshots/8.2.png)
-
-  - Now remove your local terraform.tfstate and terraform.tfstate.backup files you don't need them
-
 in case of you saw this error
 
 ![Image Description](Screenshots/10.3.png)
@@ -75,6 +71,12 @@ in case of you saw this error
 empty this file (known_hosts)
 
 ![Image Description](Screenshots/10.2.png)
+
+![Image Description](Screenshots/8.2.png)
+
+  - Now remove your local terraform.tfstate and terraform.tfstate.backup files you don't need them
+
+
 
 - Build and push the jenkins slave dockerfile with all the required tools installed on it --> [Salve-Pod-Dockerfile](Salve-Pod-Dockerfile)
 ![Image Description](Screenshots/15.png)    
@@ -85,7 +87,7 @@ empty this file (known_hosts)
 
 - Now ssh to this public vm from your local machine to begin the work
 
-- get clone the Infrastructure files to deploy jenkins
+- git clone the Infrastructure files to deploy jenkins
 
       git clone https://github.com/mohamedsamirspot/Full-Devops-Project_Infrastructure
 
@@ -100,8 +102,6 @@ empty this file (known_hosts)
 - run the playbook
 
       ansible-playbook ansible_jenkins.yaml
-
-
 
 
 

@@ -1,0 +1,7 @@
+---
+- name: Deploy Jenkins to GKE Using Helm
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Apply namespace.yaml
+      command: helm install jenkins-release . -f values.yaml
