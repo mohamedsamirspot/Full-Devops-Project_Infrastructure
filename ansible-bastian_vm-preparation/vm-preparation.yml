@@ -35,13 +35,11 @@
         name: ansible
         state: present
 
-    - name: Configure GKE credentials using gcp_container_cluster
-      gcp_container_cluster:
-        name: private-cluster
-        zone: us-east1-b
-        project: myproject-387907
-        config: gke-config
-        state: present  # Ensures the credentials are configured
+    - name: Configure GKE credentials
+      command: gcloud container clusters get-credentials private-cluster --zone us-east1-b --project myproject-387907 --configuration gke-config
+      environment:
+        CLOUDSDK_CORE_DISABLE_PROMPTS: "1"
+        PATH: "{{ lookup('env', 'PATH') }}:/usr/local/bin"  # Make sure kubectl executable is in the path
 
     - name: Clone DevOps project repository
       git:
@@ -49,7 +47,7 @@
         dest: ~/Full-Devops-Project_Infrastructure
 
     - name: Change directory to project repository
-      shell: cd ~/Full-Devops-Project_Infrastructure/Jenkins-Yaml-Files-With-Ansible
+      shell: cd ~/Full-Devops-Project_Infrastructure/Jenkins-Helm-Yaml-Files-With-Ansible
 
     - name: Run Jenkins playbook
       command: ansible-playbook ansible-helm-jenkins.yaml
