@@ -60,10 +60,11 @@ now copy the contents of the public key
 ![Image Description](Screenshots/13.png)
 
 
-- Now run the script.sh bash file to create the infra using terraform (including the bucket backend to store the state file) and configure the bastian host also using ansible
+- Now run the script.sh bash file to create the infra using terraform (including the bucket backend to store the state file) and configure the bastian host also using ansible and deploying the jenkins infra using ansible and helm
 
             ./script.sh
 
+![Image Description](Screenshots/16.png)   
 in case of you saw this error
 
 ![Image Description](Screenshots/10.3.png)
@@ -85,28 +86,8 @@ empty this file (known_hosts)
       docker push mohamedsamirebrahim/enhanced-slave-image:latest
 
 
-- Now ssh to this public vm from your local machine to begin the work
 
-- git clone the Infrastructure files to deploy jenkins
-
-      git clone https://github.com/mohamedsamirspot/Full-Devops-Project_Infrastructure
-
-- Deploy jenkins infrastructure (master and slave) using ansible --> [Ansible Jenkins yaml files](Jenkins-Yaml-Files-With-Ansible)
-
-      cd Full-Devops-Project_Infrastructure
-      cd Jenkins-Yaml-Files-With-Ansible
-- Connect to the cluster
-
-      gcloud container clusters get-credentials <privatecluster_name> --zone <zone_name> --project <project_id>
-
-- run the playbook
-
-      ansible-playbook ansible_jenkins.yaml
-
-
-
-![Image Description](Screenshots/16.png)   
-![Image Description](Screenshots/17.png) 
+- Now ssh to this public vm to get the public ip of the jenkins service load balancer
 
           kubectl get all -n jenkins
 
